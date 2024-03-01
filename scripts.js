@@ -9,7 +9,7 @@ const bookProto = {
     year: "",
     isRead: "",
     isReadToggle() {
-        this.isRead === true ? this.isRead === false : this.isRead === true; ///
+        this.isRead === true ? this.isRead = false : this.isRead = true; ///
     }
 }
 
@@ -123,12 +123,12 @@ function renderBooks (array) {
                 if (value === true) {
                     isReadEl.checked = true;
                 }
-                isReadEl.addEventListener("click", () => { //why no change vale doe
+                isReadEl.addEventListener("click", () => {
                     book.isReadToggle();
                     console.log(myLibrary)
                 })
                 bookEl.appendChild(isReadEl);
-                //how implement toggle function
+
             } else {           
                 const infoEl = document.createElement("p")
                 infoEl.setAttribute("class", key)

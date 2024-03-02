@@ -1,6 +1,7 @@
 const newEntryBtn = document.querySelector(".new-entry");
 const dialog = document.querySelector(".dialog");
 const allInputs = document.querySelectorAll("input");
+//let booksRendered = false;
 
 const bookProto = {
     title: "",
@@ -9,7 +10,7 @@ const bookProto = {
     year: "",
     isRead: "",
     isReadToggle() {
-        this.isRead === true ? this.isRead = false : this.isRead = true; ///
+        this.isRead === true ? this.isRead = false : this.isRead = true;
     }
 }
 
@@ -36,12 +37,13 @@ const myLibrary = [
         isRead: true,
     },
 ];
-//////SETUP
-myLibrary.forEach(item => {
+                                                                 /// SETUP
+myLibrary.forEach(item => {                                      /// make sure the starting books have same protoype as new ones
     Object.setPrototypeOf(item, bookProto)
     console.log(item)
 })
-renderBooks(myLibrary); //initial render
+renderBooks(myLibrary);
+//booksRendered = false;
 ///////////
 
 function addBookToLibrary() {
@@ -50,21 +52,21 @@ function addBookToLibrary() {
     const pages = parseInt(document.querySelector("#pages").value)
     const year = parseInt(document.querySelector("#year").value)
     
-    let isRead = document.querySelector("#isRead")
-    isRead.checked ? isRead = true : isRead = false
-
-    let newBook = Object.create(bookProto)
-
-    newBook.title = title;
-    newBook.author = author;
-    newBook.pages = pages;
-    newBook.year = year;
-    newBook.isRead = isRead;
+    if (title !== "" && author !== "") {
+        let isRead = document.querySelector("#isRead")
+        isRead.checked ? isRead = true : isRead = false
     
-    myLibrary.push(newBook);
-    console.log(myLibrary)////
-
-
+        let newBook = Object.create(bookProto)
+    
+        newBook.title = title;
+        newBook.author = author;
+        newBook.pages = pages;
+        newBook.year = year;
+        newBook.isRead = isRead;
+        
+        myLibrary.push(newBook);
+        console.log(myLibrary)////
+    }
 }
 
 function clearForm() {
@@ -74,28 +76,45 @@ function clearForm() {
     let year = document.querySelector("#year")
     let isRead = document.querySelector("#isRead")
     
-    title.value = ""
-    author.value = ""
-    pages.value = ""
-    year.value = ""
-    isRead.checked = false;
+    //if (booksRendered = true) {
+        title.value = ""
+        author.value = ""
+        pages.value = ""
+        year.value = ""
+        isRead.checked = false;
+
+        //booksRendered = false;
+    //}
 }
 
 allInputs.forEach(input =>
     addEventListener("click", function(event) {
         switch (event.target.getAttribute("id")) {
             case "new-entry":
-                dialog.showModal();
+                dialog.showModal()
+                toggleRequiredAttribute();//
                 console.log("opening box")////
                 break;
             case "close":
-                dialog.close();
-                console.log("closed")////
+                toggleRequiredAttribute()
+                dialog.close();//
+                clearForm();
+                console.log("closed and cleared")////
                 break;
             case "submit":
+                let myLibraryOld = {}
+                myLibraryOld = structuredClone(myLibrary)
                 addBookToLibrary()
-                clearForm()
-                renderBooks(myLibrary)
+
+                if (myLibrary.length !== myLibraryOld.length) {
+                    renderBooks(myLibrary)
+                    clearForm()
+                    toggleRequiredAttribute()
+                    dialog.close()
+                } //else {
+                //    dialog.showModal()
+                //}
+                
                 break;
         }
         event.stopImmediatePropagation()
@@ -137,14 +156,39 @@ function renderBooks (array) {
             }
         }
 
+        const deleteBtn = document.createElement("button");
+        deleteBtn.setAttribute("class", "delete");
+
+        deleteBtn.addEventListener("click", () => {
+            const bookIndex = parseInt(bookEl.getAttribute("data-"));
+            myLibrary.splice(bookIndex, 1);
+            renderBooks(myLibrary)
+            console.log(myLibrary)////////
+            
+        })
+
+        bookEl.appendChild(deleteBtn);
+
         bookGrid.appendChild(bookEl);
     })///
     
     container.appendChild(bookGrid);
 
-    // const isReadElList = document.querySelectorAll(".is-read")
-    
-    // isReadElList.forEach(item => {
-    //     item.addEventListener("click", isReadToggle())
-    // })
+    //booksRendered = true;
+}
+
+// function checkIfBookAdded() {
+//     myLibraryOld = myLibrary
+
+// }
+//let titleInput = document.querySelector("#title");
+
+function toggleRequiredAttribute() {
+    let titleInput = document.querySelector("#title");
+    let authorInput = document.querySelector("#author");
+
+    titleInput.toggleAttribute("required")
+    authorInput.toggleAttribute("required")
+
+    console.log(titleInput.hasAttribute("required"))//
 }

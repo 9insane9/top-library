@@ -1,7 +1,6 @@
 const newEntryBtn = document.querySelector(".new-entry");
 const dialog = document.querySelector(".dialog");
 const allInputs = document.querySelectorAll("input");
-//let booksRendered = false;
 
 const bookProto = {
     title: "",
@@ -43,7 +42,6 @@ myLibrary.forEach(item => {                                      /// make sure t
     console.log(item)
 })
 renderBooks(myLibrary);
-//booksRendered = false;
 ///////////
 
 function addBookToLibrary() {
@@ -76,15 +74,11 @@ function clearForm() {
     let year = document.querySelector("#year")
     let isRead = document.querySelector("#isRead")
     
-    //if (booksRendered = true) {
         title.value = ""
         author.value = ""
         pages.value = ""
         year.value = ""
         isRead.checked = false;
-
-        //booksRendered = false;
-    //}
 }
 
 allInputs.forEach(input =>
@@ -111,9 +105,7 @@ allInputs.forEach(input =>
                     clearForm()
                     toggleRequiredAttribute()
                     dialog.close()
-                } //else {
-                //    dialog.showModal()
-                //}
+                }
                 
                 break;
         }
@@ -173,15 +165,7 @@ function renderBooks (array) {
     })///
     
     container.appendChild(bookGrid);
-
-    //booksRendered = true;
 }
-
-// function checkIfBookAdded() {
-//     myLibraryOld = myLibrary
-
-// }
-//let titleInput = document.querySelector("#title");
 
 function toggleRequiredAttribute() {
     let titleInput = document.querySelector("#title");

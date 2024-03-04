@@ -84,7 +84,7 @@ function clearForm() {
 allInputs.forEach(input =>
     addEventListener("click", function(event) {
         switch (event.target.getAttribute("id")) {
-            case "new-entry":
+            case "entry-icon":
                 dialog.showModal()
                 toggleRequiredAttribute();//
                 console.log("opening box")////
@@ -127,37 +127,63 @@ function renderBooks (array) {
         bookEl.setAttribute("data-", index);
 
         for (const [key, value] of Object.entries(book)) {
-            if (key === "isRead") {
-                const isReadEl = document.createElement("input");
-                isReadEl.setAttribute("class", "is-read");
-                isReadEl.setAttribute("type", "checkbox");    
-                if (value === true) {
-                    isReadEl.checked = true;
-                }
-                isReadEl.addEventListener("click", () => {
-                    book.isReadToggle();
-                    console.log(myLibrary)
-                })
-                bookEl.appendChild(isReadEl);
+                if (key === "isRead") {
+                    const isReadLabelEl = document.createElement("p");
+                    const isReadBoxEl = document.createElement("input");
 
-            } else {           
-                const infoEl = document.createElement("p")
-                infoEl.setAttribute("class", key)
-                infoEl.textContent = value
-                bookEl.appendChild(infoEl)
-            }
+                    isReadLabelEl.textContent = "Read"
+                    isReadLabelEl.setAttribute("class", "read-label")
+
+                    isReadBoxEl.setAttribute("class", "is-read");
+                    isReadBoxEl.setAttribute("type", "checkbox");    
+
+                    if (value === true) {
+                        isReadBoxEl.checked = true;
+                    }
+                    isReadBoxEl.addEventListener("click", () => {
+                        book.isReadToggle();
+                        console.log(myLibrary)
+                    })
+
+                    isReadLabelEl.appendChild(isReadBoxEl);
+                    bookEl.appendChild(isReadLabelEl);
+
+                } else {           
+                    const infoEl = document.createElement("p")
+                    infoEl.setAttribute("class", key)
+                    infoEl.textContent = value
+                    bookEl.appendChild(infoEl)
+
+                    if (infoEl.textContent === "NaN") {
+                        infoEl.textContent = "-"
+                    }
+
+                    if (key === "pages" 
+                    && infoEl.textContent !== "-") {
+                        infoEl.textContent += " pages"
+                    }
+
+                    if (key === "author") {
+                        infoEl.textContent = "by " + infoEl.textContent
+                    }
+                }
         }
 
         const deleteBtn = document.createElement("button");
         deleteBtn.setAttribute("class", "delete");
 
-        deleteBtn.addEventListener("click", () => {
+        const deleteIcon = document.createElement("img");
+        deleteIcon.setAttribute("class", "deleteIcon")
+
+        deleteIcon.addEventListener("click", () => {
             const bookIndex = parseInt(bookEl.getAttribute("data-"));
             myLibrary.splice(bookIndex, 1);
             renderBooks(myLibrary)
             console.log(myLibrary)////////
             
         })
+
+        deleteBtn.appendChild(deleteIcon)
 
         bookEl.appendChild(deleteBtn);
 

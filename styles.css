@@ -1,0 +1,103 @@
+body {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 1200px;
+    background: linear-gradient(
+        rgba(43, 43, 43, 0.816), 
+        rgba(5, 5, 5, 0.803)
+      ),
+    url("./media/books-1655783_1920.jpg");
+    background-size: cover;
+}
+
+.container-top {
+    display: flex;
+    height: 15vh;
+    margin-bottom: 30px;
+    justify-content: flex-end;
+}
+
+#new-entry {
+    margin: 30px 30px 10px 0;
+    flex-grow: 0;
+    z-index: 999;
+    background: none;
+    border: none;
+    filter: invert();
+}
+
+#new-entry:hover {
+    cursor: pointer;
+}
+
+#entry-icon {
+    width: 100px;
+    height: auto;
+}
+
+
+.book-grid {
+    margin: 0 auto;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1000px;
+}
+
+.book {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    height: 280px;
+    border: 1px solid goldenrod;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px goldenrod;
+    color: rgb(248, 240, 225);
+    align-items: center;
+    background: linear-gradient(
+        rgba(73, 73, 73, 0.616), 
+        rgba(5, 5, 5, 0.603)
+      ),
+    url("./media/paper-1914901_640.jpg");
+}
+
+.title {
+    font-style: italic;
+}
+
+.read-label {
+    display: flex;
+    align-items: center;
+}
+
+.is-read {
+    margin-left: 10px;
+}
+
+.delete {
+    display: flex;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+}
+
+.deleteIcon {
+    content: url("./media/trash-can-outline.svg");
+    width: 30px;
+    height: auto;
+    filter: invert();
+}
+
+.deleteIcon:hover {
+    cursor: pointer;
+}
+
+/* FORM STYLING */
+

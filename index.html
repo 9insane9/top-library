@@ -14,7 +14,9 @@
         </button>
     </div>
     <dialog class="dialog" autofocus>
-        <button id="close" formmethod="dialog">X</button>
+        <button id="close" formmethod="dialog">
+            <img id="closeIcon" src="./media/close-box-outline.svg" alt="">
+        </button>
         <form action="">
             <p>
                 <label for="title">Title:</label>
@@ -32,8 +34,8 @@
                 <label for="year">Release year:</label>
                 <input id="year" name="year" type="tel" pattern="[0-9]+">
             </p>
-            <p>
-                <label for="isRead">Have you read it</label>
+            <p class="is-read-container">
+                <label for="isRead">I've read this book</label>
                 <input id="isRead" type="checkbox" name="isRead">
             </p>
             <input id="submit" type="submit" formmethod="dialog">

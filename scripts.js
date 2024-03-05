@@ -89,7 +89,7 @@ allInputs.forEach(input =>
                 toggleRequiredAttribute();//
                 console.log("opening box")////
                 break;
-            case "close":
+            case "closeIcon":
                 toggleRequiredAttribute()
                 dialog.close();//
                 clearForm();

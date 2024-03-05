@@ -1,7 +1,12 @@
+html {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0 auto;
     padding: 0;
     max-width: 1200px;
+    min-width: 350px;
     background: linear-gradient(
         rgba(43, 43, 43, 0.816), 
         rgba(5, 5, 5, 0.803)
@@ -18,12 +23,13 @@ body {
     height: 15vh;
     margin-bottom: 30px;
     justify-content: flex-end;
+    z-index: 999;
+    background: linear-gradient(#0000006c, #0000006c);
 }
 
 #new-entry {
     margin: 20px 20px 10px 0;
     flex-grow: 0;
-    z-index: 999;
     background: none;
     border: none;
     filter: invert();
@@ -34,7 +40,82 @@ body {
     height: auto;
 }
 
+/*MODAL*/
+dialog {
+    position: relative;
+    width: clamp(350px, 90vw, 450px);
+    height: clamp(400px, 80vh, 600px);
+    border: 3px;
 
+    border-radius: 5px;
+    font-size: 1.1rem;
+    color: rgb(248, 240, 225);
+    background: linear-gradient(
+        #0505059a, 
+        #050505d7
+      ),
+    url("./media/paper-1914901_640.jpg");
+}
+
+#closeIcon {
+    content: url("./media/close-box-outline.svg");
+    width: 35px;
+    height: auto;
+    filter: invert();
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 80%;
+    margin-top: 30px;
+}
+
+form p:not(.is-read-container) {
+    display: flex;
+    flex-direction: column;
+}
+
+form p {
+    width: 80%;
+    margin: 0 auto;
+}
+
+form p:not(.is-read-container) label {
+    margin-bottom: 10px;
+}
+
+form p:not(.is-read-container) input {
+    height: 30px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    padding-left: 5px;
+    background-color: rgb(248, 240, 225) ;
+}
+
+form p:not(.is-read-container) input:hover, form p:not(.is-read-container) input:focus {
+    border: 2px solid goldenrod;
+    box-shadow: 2px 2px 2px goldenrod;
+}
+
+.is-read-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+}
+
+.is-read-container label {
+    margin-right: 10px;
+}
+
+#isRead {
+    width: 25px;
+    height: 25px;
+}
+
+/*BOTTOM SECTION*/
 .book-grid {
     margin: 0 auto;
     display: flex;
@@ -78,7 +159,7 @@ body {
     margin-left: 10px;
 }
 
-.delete {
+.delete, #close {
     display: flex;
     position: absolute;
     top: 15px;
@@ -96,7 +177,7 @@ body {
     filter: invert();
 }
 
-.deleteIcon:hover, #entry-icon:hover {
+.deleteIcon:hover, #entry-icon:hover, #closeIcon:hover {
     cursor: pointer;
     transform: scale(1.1);
     border: none;

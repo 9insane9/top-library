@@ -9,6 +9,13 @@
 html {
     box-sizing: border-box;
     font-family: "Madimi One", sans-serif;
+    background: linear-gradient(
+        rgba(5, 5, 5, 0.9), 
+        rgba(5, 5, 5, 0.9)
+      ),
+    url("./media/books-1655783_1920.jpg");
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 body {
@@ -17,12 +24,14 @@ body {
     max-width: 1200px;
     min-width: 350px;
     background: linear-gradient(
-        rgba(43, 43, 43, 0.816), 
-        rgba(5, 5, 5, 0.803)
+        rgba(43, 43, 43, 0.72), 
+        rgba(5, 5, 5, 0.72)
       ),
     url("./media/books-1655783_1920.jpg");
     background-size: cover;
     background-attachment: fixed;
+    min-height: 99.5vh;
+    /* border: 1px solid red; */
 }
 
 .container-top {

@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&display=swap');
+
+.madimi-one-regular {
+    font-family: "Madimi One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 html {
     box-sizing: border-box;
+    font-family: "Madimi One", sans-serif;
 }
 
 body {
@@ -45,7 +54,7 @@ dialog {
     position: relative;
     width: clamp(350px, 90vw, 450px);
     height: clamp(400px, 80vh, 600px);
-    border: 3px;
+    border: 2px solid hsl(43, 74%, 60%);
 
     border-radius: 5px;
     font-size: 1.1rem;
@@ -115,6 +124,28 @@ form p:not(.is-read-container) input:hover, form p:not(.is-read-container) input
     height: 25px;
 }
 
+#submit {
+    font-family: "Madimi One", sans-serif;
+    font-size: 1.45rem;
+    margin-top: 30px;
+    height: 45px;
+    width: 75%;
+    align-self: center;
+    color: rgb(248, 240, 225);
+    border: 2px solid goldenrod;
+    border-radius: 5px;
+    background: linear-gradient(
+        #0505059a, 
+        #050505d7
+      ),
+    url("./media/paper-1914901_640.jpg");
+}
+
+#submit:hover {
+    transform: scale(1.05);
+    box-shadow: 2px 2px 2px rgba(255, 217, 0, 0.781);
+}
+
 /*BOTTOM SECTION*/
 .book-grid {
     margin: 0 auto;
@@ -132,7 +163,7 @@ form p:not(.is-read-container) input:hover, form p:not(.is-read-container) input
     flex-direction: column;
     justify-content: center;
     width: 300px;
-    height: 280px;
+    height: 320px;
     border: 1px solid goldenrod;
     border-radius: 5px;
     box-shadow: 2px 2px 2px goldenrod;

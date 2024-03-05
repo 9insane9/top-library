@@ -8,26 +8,25 @@ body {
       ),
     url("./media/books-1655783_1920.jpg");
     background-size: cover;
+    background-attachment: fixed;
 }
 
 .container-top {
     display: flex;
+    top: 0;
+    position: sticky;
     height: 15vh;
     margin-bottom: 30px;
     justify-content: flex-end;
 }
 
 #new-entry {
-    margin: 30px 30px 10px 0;
+    margin: 20px 20px 10px 0;
     flex-grow: 0;
     z-index: 999;
     background: none;
     border: none;
     filter: invert();
-}
-
-#new-entry:hover {
-    cursor: pointer;
 }
 
 #entry-icon {
@@ -43,6 +42,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     max-width: 1000px;
+    padding-bottom: 30px;
 }
 
 .book {
@@ -55,11 +55,12 @@ body {
     border: 1px solid goldenrod;
     border-radius: 5px;
     box-shadow: 2px 2px 2px goldenrod;
+    font-size: 1.1rem;
     color: rgb(248, 240, 225);
     align-items: center;
     background: linear-gradient(
-        rgba(73, 73, 73, 0.616), 
-        rgba(5, 5, 5, 0.603)
+        #0505059a, 
+        #050505d7
       ),
     url("./media/paper-1914901_640.jpg");
 }
@@ -95,8 +96,12 @@ body {
     filter: invert();
 }
 
-.deleteIcon:hover {
+.deleteIcon:hover, #entry-icon:hover {
     cursor: pointer;
+    transform: scale(1.1);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px midnightblue;
 }
 
 /* FORM STYLING */

@@ -1,48 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
     <script src="./scripts.js" defer></script>
-    <link rel="stylesheet" href="./styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
     <div class="container-top">
-        <button id="new-entry">
-            <img id="entry-icon" src="./media/plus-box-outline.svg" alt="">
-        </button>
+      <button id="new-entry">
+        <img id="entry-icon" src="./media/plus-box-outline.svg" alt="" />
+      </button>
     </div>
     <dialog class="dialog" autofocus>
-        <button id="close" formmethod="dialog">
-            <img id="closeIcon" src="./media/close-box-outline.svg" alt="">
-        </button>
-        <form action="">
-            <p>
-                <label for="title">Title:</label>
-                <input id="title" name="title" type="text" autofocus>
-            </p>
-            <p>
-                <label for="author">Author:</label>
-                <input id="author" name="author" type="text">
-            </p>
-            <p>
-                <label for="pages">Number of pages:</label>
-                <input id="pages" name="pages" type="tel" pattern="[0-9]+">
-            </p>
-            <p>
-                <label for="year">Release year:</label>
-                <input id="year" name="year" type="tel" pattern="[0-9]+">
-            </p>
-            <p class="is-read-container">
-                <label for="isRead">I've read this book</label>
-                <input id="isRead" type="checkbox" name="isRead">
-            </p>
-            <input id="submit" type="submit" formmethod="dialog" value="Add to library">
-        </form>
+      <button id="close" formmethod="dialog">
+        <img id="closeIcon" src="./media/close-box-outline.svg" alt="" />
+      </button>
+      <form novalidate action="">
+        <p>
+          <label for="title">Title:</label>
+          <input id="title" name="title" type="text" autofocus />
+        </p>
+        <p>
+          <label for="author">Author:</label>
+          <input id="author" name="author" type="text" />
+        </p>
+        <p>
+          <label for="pages">Number of pages:</label>
+          <input id="pages" name="pages" type="tel" pattern="[0-9]+" />
+        </p>
+        <p>
+          <label for="year">Release year:</label>
+          <input id="year" name="year" type="tel" pattern="[0-9]+" />
+        </p>
+        <p class="is-read-container">
+          <label for="isRead">I've read this book</label>
+          <input id="isRead" type="checkbox" name="isRead" />
+        </p>
+        <input
+          id="submit"
+          type="submit"
+          formmethod="dialog"
+          value="Add to library"
+        />
+      </form>
     </dialog>
     <div class="container-main">
-        <div class="book-grid"></div>
+      <div class="book-grid"></div>
     </div>
-</body>
+  </body>
 </html>
